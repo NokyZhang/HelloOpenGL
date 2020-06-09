@@ -136,8 +136,8 @@
     <ClInclude Include="..\include\glfw3.h" />
     <ClInclude Include="..\include\glfw3native.h" />
     <ClInclude Include="..\include\KHR\khrplatform.h" />
+    <ClInclude Include="..\include\stb_image.h" />
     <ClInclude Include="..\src\shader.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\glad.c" />

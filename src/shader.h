@@ -40,7 +40,8 @@ public:
 	}
 
 	void setUniform(const string &name, int value) const {
-		glUniform1i(glGetUniformLocation(programID, name.c_str()), (int)value);
+		GLint loc = glGetUniformLocation(programID, name.c_str());
+		glUniform1i(loc, (int)value);
 	}
 
 	void setUniform(const string &name, float x, float y, float z, float w) const {
