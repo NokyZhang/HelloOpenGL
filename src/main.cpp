@@ -1,13 +1,17 @@
 
 #include <glad/glad.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
 
-#include "shader.h"
-
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+
+#include "shader.h"
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -114,9 +118,14 @@ int main()
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
+
 	shaderProgram.use();
 	shaderProgram.setUniform("texture1", 0);
 	shaderProgram.setUniform("texture2", 1);
+	shaderProgram.setUniform("transform", trans);
 
 	while (!glfwWindowShouldClose(window)) {
 

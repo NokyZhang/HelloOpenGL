@@ -48,6 +48,10 @@ public:
 		glUniform4f(glGetUniformLocation(programID, name.c_str()), x, y, z, w);
 	}
 
+	void setUniform(const string &name, glm::mat4 matrix) const {
+		glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+
 private:
 	string getShaderCode(const char* shaderPath) {
 		ifstream shaderFile;
