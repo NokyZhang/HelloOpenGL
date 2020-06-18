@@ -48,6 +48,14 @@ public:
 		glUniform4f(glGetUniformLocation(programID, name.c_str()), x, y, z, w);
 	}
 
+	void setUniform(const string &name, float x, float y, float z) const {
+		glUniform3f(glGetUniformLocation(programID, name.c_str()), x, y, z);
+	}
+
+	void setUniform(const string &name, float x) const {
+		glUniform1f(glGetUniformLocation(programID, name.c_str()), x);
+	}
+
 	void setUniform(const string &name, glm::mat4 matrix) const {
 		glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
 	}
